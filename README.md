@@ -1,16 +1,73 @@
-# React + Vite
+# 🪣 Bucket List Tracker – AWS Serverless Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack **serverless** web application that lets users create and manage their personal bucket-list items.  
+Built with **React** on the frontend and **AWS Amplify (Gen 2)** on the backend to showcase cloud-native architecture.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Overview
 
-## React Compiler
+The **Bucket List Tracker** demonstrates how multiple AWS services integrate to create a secure, scalable, and fully managed serverless app.  
+It provides authentication, an API layer, persistent NoSQL data storage, and media uploads — all deployed automatically through **Infrastructure-as-Code (IaC)** using Amplify’s CDK-based backend.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧱 Architecture
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Layer | AWS Service | Description |
+|-------|--------------|-------------|
+| **Frontend** | AWS Amplify Hosting + React | User interface hosted on Amplify; interacts with backend via Amplify libraries |
+| **Authentication** | Amazon Cognito | Handles user sign-up, sign-in, and access tokens |
+| **API** | AWS AppSync (GraphQL) | Secure API endpoint that connects the app to DynamoDB |
+| **Database** | Amazon DynamoDB | Stores user bucket-list items (`BucketItem` model) |
+| **Storage** | Amazon S3 | Stores user-uploaded images under `media/<identityId>/…` |
+| **Infrastructure as Code** | AWS Amplify Gen 2 (CDK under the hood) | Backend deployed and managed automatically from code |
+
+---
+
+## 🧩 Features
+
+- 🔐 **User Authentication** — Secure email-based login via Cognito  
+- 🗂️ **GraphQL API** — Managed through AppSync; supports create/read/update/delete  
+- 💾 **Serverless Data Storage** — Items persisted in DynamoDB  
+- 🖼️ **Image Uploads** — Each user stores private images in S3  
+- ⚙️ **Infrastructure-as-Code** — Entire stack deployed through Amplify CDK without manual console setup  
+
+---
+
+## 🧠 Learning Focus
+
+This project served as an introduction to **AWS serverless architecture** and **Infrastructure-as-Code** concepts:
+- Understanding how Amplify provisions Cognito, AppSync, DynamoDB, and S3 automatically  
+- Working with the Amplify SDK (`aws-amplify`, `@aws-amplify/ui-react`) in a React environment  
+- Exploring Amplify’s **sandbox** environment for rapid backend iteration  
+- Seeing how high-level IaC compares to manual CDK/Terraform deployment  
+
+---
+
+## ⚙️ Technologies Used
+
+- **Frontend:** React 19, Vite, Amplify UI React  
+- **Backend:** AWS Amplify Gen 2, AppSync, DynamoDB, S3, Cognito  
+- **Languages:** JavaScript (ES2022)  
+- **IaC:** Amplify Gen 2 (CDK-based)  
+- **Auth Flow:** Email sign-up + Cognito User Pools  
+
+---
+
+## 🧭 Next Steps
+
+This project was a starting point for mastering AWS serverless and IaC.  
+Future goals:
+- Re-create this stack manually using **AWS CDK** to understand each resource definition  
+- Add **monitoring (CloudWatch)** and **logging**  
+- Implement **custom Lambda resolvers** for more complex backend logic  
+
+---
+
+## 🧑‍💻 Author
+
+**Yuval Kandov**  
+Cloud-focused Computer Science student at Afeka College  
+Exploring AWS Cloud, DevOps, and Infrastructure-as-Code  
+[GitHub @YuvalKandov](https://github.com/YuvalKandov)
